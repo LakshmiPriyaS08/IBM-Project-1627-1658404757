@@ -5,8 +5,8 @@ from flask import Flask, request, render_template
 
 app= Flask(__name__)
 
-model = pickle.load(open('','rb'))
-scale = pickle.load(open('','rb'))
+model = pickle.load(open('RandomForestClassifier.pkl','rb'))
+scale = pickle.load(open('scale.pkl','rb'))
 
 @app.route('/')
 def home():
@@ -18,6 +18,9 @@ def home():
 def registerpage():
     return render_template('register.html')
 
+@app.route('/signinpage')
+def signinpage():
+    return render_template('signin.html')
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -46,6 +49,24 @@ def register():
             return render_template("register.html", msg=msg)
             con.close()
 
+@app.route('/signin', methods=['POST', 'GET'])
+def signin():
+    if request.method == 'POST':
+        name = request.form['uname']
+        password = request.form['password']
+
+
+        print(name, password)
+        with sql.connect("user_login.db") as con:
+            cursor = con.cursor()
+            cursor.execute('SELECT * FROM user WHERE name = ? AND password = ?', (name, password))
+            account = cursor.fetchone()
+            if account:
+                msg = 'Logged in successfully !'
+                return render_template('index.html', msg=msg)
+            else:
+                msg = 'Incorrect username / password !'
+                return render_template('signin.html', msg=msg)
 
 
 
@@ -72,7 +93,7 @@ def predict():
     Temp9am = float(request.form['Temp9am'])
     Temp3pm = float(request.form['Temp3pm'])
 
-    data = []
+    data = [[mintmp,maxtemp,Rainfall,Sunshine,Evaporation,WindGustSpeed,WindSpeed9am,WindSpeed3pm,Humidity9am,Humidity3pm,Pressure9am,Pressure3pm,Cloud9am,Cloud3pm,Temp9am,Temp3pm]]
     prediction=model.predict(data)
     prob = model.predict_proba(data)
     print (prediction)
