@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head >
+        <meta charset="UTF-8">
+        <title>Rainfall prediction Webpage</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+   
+<body style="background-color: black;" >
+    
+    <div class="container-md mb-3 mt-3 d-flex justify-content-center">
+        <div>
+            <div class="text-center">
+                <h1 style="color:white"> <span style="color:blue"> RAINFALL </span>  PREDICTION </h1>
+        </div>
+
+        
+            <form action="{{ url_for('predict')}}"method="post">
+        <br>
+        <br>
+        <div class="container">
+        <div class="row"   >
+            <div class="col form-group" style="padding-left:60px">
+
+         <label for="MinTemp" class="text-white">MinTemp:</label>
+         <input class="form-control mb-3"  style="width:400px" type = "number" step="any" id="MinTemp" name="MinTemp" value="MinTemp" required>
+
+         <label for="MaxTemp" class="text-white">MaxTemp:</label>
+         <input class="form-control mb-3 " style="width:400px"  type = "number" step="any" id="MaxTemp" name="MaxTemp" value="MaxTemp" required>
+
+         <label for="Rainfall" class="text-white">Rainfall:</label>
+         <input  class="form-control mb-3 "style="width:400px" type = "number" step="any" id="Rainfall" name="Rainfall" value="Rainfall" required>
+     
+         <label for="Evaporation" class="text-white" >Evaporation:</label>
+         <input class="form-control mb-3"style="width:400px"  type = "number" step="any" id="Evaporation" name="Evaporation" value="Evaporation" required>
+     
+         <label for="Sunshine" class="text-white" >Sunshine:</label>
+         <input class="form-control mb-3" style="width:400px" type = "number" step="any"   id="Sunshine" name="Sunshine" value="Sunshine" required>
+
+
+         <label for="WindGustSpeed" class="text-white">WindGustSpeed:</label>
+         <input  class="form-control mb-3 "style="width:400px" type = "number" step="any" step="any" id="WindGustSpeed" name="WindGustSpeed" val="WindGustSpeed" required>
+
+         <label for="WindSpeed9am" class="text-white">WindSpeed9am:</label>
+         <input  class="form-control mb-3 "style="width:400px" type = "number" step="any"  id="WindSpeed9am" name="WindSpeed9am" val="WindSpeed9am" required>
+
+         <label for="WindSpeed3pm" class="text-white">WindSpeed3pm:</label>
+         <input  class="form-control mb-3 "style="width:400px" type = "number" step="any"  id="WindSpeed3pm" name="WindSpeed3pm" val="WindSpeed3pm" required>
+
+            </div>
+    <div class="col form-group mb-3"  style="padding-left:60px">
+
+         <label for="Humidity9am" class="text-white">Humidity9am:</label>
+         <input class="form-control mb-3 " style="width:400px" type = "number" step="any" step="any" id="Humidity9am" name="Humidity9am" val="Humidity9am" required>
+
+         <label for="Humidity3pm" class="text-white" >Humidity3pm:</label>
+         <input  class="form-control mb-3" style="width:400px" type = "number" step="any"  id="Humidity3pm" name="Humidity3pm" val="Humidity3pm" required>
+
+         <label for="Pressure9am" class="text-white" >Pressure9am:</label>
+         <input  class="form-control mb-3" style="width:400px" type = "number" step="any" id="Pressure9am" name="Pressure9am" val="Pressure9am" required>
+
+         <label for="Pressure3pm" class="text-white" >Pressure3pm:</label>
+         <input  class="form-control mb-3" style="width:400px" type = "number" step="any" id="Pressure3pm" name="Pressure3pm" val="Pressure3pm" required>
+
+         <label for="Cloud9am" class="text-white">Cloud9am:</label>
+         <input class="form-control mb-3" style="width:400px" type = "number" step="any" id="Cloud9am" name="Cloud9am" val="Cloud9am" required>
+
+         <label for="Cloud3pm" class="text-white">Cloud3pm:</label>
+         <input class="form-control mb-3" style="width:400px" type = "number" step="any" id="Cloud3pm" name="Cloud3pm" val="Cloud3pm" required>
+
+
+         <label for="Temp9am" class="text-white">Temp9am:</label>
+         <input  class="form-control mb-3" style="width:400px" type = "number" step="any" id="Temp9am" name="Temp9am" val="Temp9am" required>
+
+         <label for="Temp3pm" class="text-white" >Temp3pm:</label>
+         <input  class="form-control mb-3" style="width:400px" type = "number" step="any" id="Temp3pm" name="Temp3pm" val="Temp3pm" required>
+
+    </div>
+
+    </div>
+<div class="row d-flex justify-content-center mb-3">
+    <button class="btn btn-outline-primary  " style="width:200px" role="button">Predict</button>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <a  style="width:200px" href="/"  class="btn btn-outline-danger mb-3 " role="button">BACK</a>
+    </div>
+
+
+
+
+
+</form>
+    
+    </body>
+
+</html>
